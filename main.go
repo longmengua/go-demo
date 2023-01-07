@@ -37,6 +37,10 @@ func main() {
 		db.Instance.AutoMigrate(&entity.User{})
 	}
 
+	// declare repo
+
+	// declare services
+
 	// declare controllers
 	controller := contorller.Struct{}
 	controller.Init()

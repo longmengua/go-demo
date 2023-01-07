@@ -6,26 +6,32 @@ import (
 )
 
 func (s *Struct) Init() {
+	// Inject service to controller
+	userController := user_controller.Struct{
+		Service: s.Service,
+	}
+
+	// Generate routes of APIs
 	s.Routes = []api.Route{
 		{
 			Method:      "get",
 			Path:        "user",
-			HandlerFunc: user_controller.ReadUserController,
+			HandlerFunc: userController.ReadUserController,
 		},
 		{
 			Method:      "post",
 			Path:        "user",
-			HandlerFunc: user_controller.UpsertUserController,
+			HandlerFunc: userController.CreateUserController,
 		},
 		{
 			Method:      "put",
 			Path:        "user",
-			HandlerFunc: user_controller.UpsertUserController,
+			HandlerFunc: userController.UpdateUserController,
 		},
 		{
 			Method:      "delete",
 			Path:        "user",
-			HandlerFunc: user_controller.DeleteUserController,
+			HandlerFunc: userController.DeleteUserController,
 		},
 	}
 }

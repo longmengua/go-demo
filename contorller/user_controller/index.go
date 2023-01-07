@@ -1,11 +1,14 @@
 package user_controller
 
-func ReadUserController(req interface{}) (res interface{}, err error) {
-	return nil, nil
+func (s *Struct) ReadUserController(req interface{}) (res interface{}, err error) {
+	return s.Service.UserService("get")
 }
-func UpsertUserController(req interface{}) (res interface{}, err error) {
-	return nil, nil
+func (s *Struct) CreateUserController(req interface{}) (res interface{}, err error) {
+	return s.Service.UserService("post")
 }
-func DeleteUserController(req interface{}) (res interface{}, err error) {
-	return nil, nil
+func (s *Struct) UpdateUserController(req interface{}) (res interface{}, err error) {
+	return s.Service.UserService("put")
+}
+func (s *Struct) DeleteUserController(req interface{}) (res interface{}, err error) {
+	return s.Service.UserService("delete")
 }

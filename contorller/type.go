@@ -1,9 +1,13 @@
 package contorller
 
-import "go-demo/util/api"
+import (
+	"go-demo/service"
+	"go-demo/util/api"
+)
 
 type HandlerFunc func(req interface{}) (res interface{}, err error)
 
 type Struct struct {
-	Routes []api.Route
+	Routes  []api.Route
+	Service *service.Struct
 }

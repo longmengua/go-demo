@@ -5,7 +5,6 @@ go 1.19
 require (
 	github.com/gin-gonic/gin v1.8.2
 	gopkg.in/yaml.v2 v2.4.0
-	gorm.io/driver/mysql v1.4.5
 	gorm.io/gorm v1.24.3
 )
 
@@ -14,8 +13,8 @@ require (
 	github.com/go-playground/locales v0.14.0 // indirect
 	github.com/go-playground/universal-translator v0.18.0 // indirect
 	github.com/go-playground/validator/v10 v10.11.1 // indirect
-	github.com/go-sql-driver/mysql v1.7.0 // indirect
 	github.com/goccy/go-json v0.10.0 // indirect
+	github.com/google/uuid v1.3.0
 	github.com/jackc/pgpassfile v1.0.0 // indirect
 	github.com/jackc/pgservicefile v0.0.0-20221227161230-091c0ba34f0a // indirect
 	github.com/jackc/pgx/v5 v5.2.0 // indirect
@@ -34,5 +33,5 @@ require (
 	golang.org/x/text v0.6.0 // indirect
 	golang.org/x/xerrors v0.0.0-20200804184101-5ec99f83aff1 // indirect
 	google.golang.org/protobuf v1.28.1 // indirect
-	gorm.io/driver/postgres v1.4.6 // indirect
+	gorm.io/driver/postgres v1.4.6
 )
