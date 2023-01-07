@@ -3,20 +3,23 @@ package db
 import (
 	"fmt"
 
-	"gorm.io/driver/mysql"
+	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
 
-func (s *Struct) Init(
-	host string,
-	port string,
-	user string,
-	pwd string,
-) {
-	url := fmt.Sprintf("%s:%s@tcp(%s:%s)/TPDB?charset=utf8mb4&parseTime=True&loc=Local", user, pwd, host, port)
-	instance, err := gorm.Open(mysql.Open(url), &gorm.Config{})
+func (s *Struct) Init() {
+	// dsn := "host=db.mqkycbwhynxeenavanil.supabase.co user=postgres password=ifHCR0kfZKVqMFfd dbname=postgres port=5432 sslmode=disable TimeZone=Asia/Taipei"
+	dsn := fmt.Sprintf(
+		"host=%s user=%s password=%s dbname=%s port=%s sslmode=disable TimeZone=Asia/Shanghai",
+		s.Host,
+		s.User,
+		s.Pwd,
+		s.DbName,
+		s.Port,
+	)
+	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
 	if err != nil {
-		panic("failed to connect MySQL database")
+		panic("failed to connect Database")
 	}
-	s.Instance = instance
+	s.Instance = db
 }

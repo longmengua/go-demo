@@ -5,8 +5,11 @@ type DbConfig struct {
 	Port     string `yaml:"Port"`
 	User     string `yaml:"User"`
 	Password string `yaml:"Password"`
+	DB_Name  string `yaml:"DB_Name"`
 }
 
 type Struct struct {
-	DB DbConfig `yaml:"DB"`
+	RootPath   string
+	DB         DbConfig `yaml:"DB"`
+	MIGRATE_UP bool     `yaml:"MIGRATE_UP"`
 }

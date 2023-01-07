@@ -17,16 +17,9 @@ func responseHandler(ctx *gin.Context, h func(req interface{}) (res interface{},
 	ctx.JSON(http.StatusOK, res)
 }
 
-func (s *Struct) Init(routes []struct {
-	Method      string
-	Path        string
-	HandlerFunc func(req interface{}) (res interface{}, err error)
-}) {
-	engine := gin.Default()
-
-	// arr := &gin.RoutesInfo{}
-	if routes != nil {
-		for _, v := range routes {
+func (s *Struct) Init() {
+	if s.Routes != nil {
+		for _, v := range s.Routes {
 			r := &gin.RouteInfo{
 				Method: v.Method,
 				Path:   v.Path,
@@ -35,19 +28,24 @@ func (s *Struct) Init(routes []struct {
 				},
 			}
 			if strings.EqualFold(r.Method, "get") {
-				engine.GET(r.Path, r.HandlerFunc)
+				s.Engine.GET(r.Path, r.HandlerFunc)
 			}
 			if strings.EqualFold(r.Method, "post") {
-				engine.POST(r.Path, r.HandlerFunc)
+				s.Engine.POST(r.Path, r.HandlerFunc)
 			}
 			if strings.EqualFold(r.Method, "put") {
-				engine.PUT(r.Path, r.HandlerFunc)
+				s.Engine.PUT(r.Path, r.HandlerFunc)
 			}
 			if strings.EqualFold(r.Method, "delete") {
-				engine.DELETE(r.Path, r.HandlerFunc)
+				s.Engine.DELETE(r.Path, r.HandlerFunc)
 			}
 		}
 	}
 
-	s.Instance = engine
+	s.Engine.GET("/", func(ctx *gin.Context) {
+		ctx.JSON(http.StatusOK, "Server alive")
+	})
+
+	// launch api server
+	s.Engine.Run()
 }

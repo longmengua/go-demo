@@ -8,9 +8,9 @@ import (
 	"gopkg.in/yaml.v2"
 )
 
-func (s *Struct) Init(rootPath string) {
-	log.Println(rootPath)
-	filePath := fmt.Sprintf("%s/env.yaml", rootPath)
+func (s *Struct) Init() {
+	log.Println(s.RootPath)
+	filePath := fmt.Sprintf("%s/env.yaml", s.RootPath)
 	yamlFile, err := ioutil.ReadFile(filePath)
 	if err != nil {
 		panic("failed to connect database")

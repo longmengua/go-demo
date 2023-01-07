@@ -1,7 +1,31 @@
 package contorller
 
-func (s *Struct) Init(routes []Route) {
-	if s.Routes != nil && cap(routes) > 0 {
-		s.Routes = append(s.Routes, routes...)
+import (
+	"go-demo/contorller/user_controller"
+	"go-demo/util/api"
+)
+
+func (s *Struct) Init() {
+	s.Routes = []api.Route{
+		{
+			Method:      "get",
+			Path:        "user",
+			HandlerFunc: user_controller.ReadUserController,
+		},
+		{
+			Method:      "post",
+			Path:        "user",
+			HandlerFunc: user_controller.UpsertUserController,
+		},
+		{
+			Method:      "put",
+			Path:        "user",
+			HandlerFunc: user_controller.UpsertUserController,
+		},
+		{
+			Method:      "delete",
+			Path:        "user",
+			HandlerFunc: user_controller.DeleteUserController,
+		},
 	}
 }
