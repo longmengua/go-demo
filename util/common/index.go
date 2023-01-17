@@ -1,8 +1,14 @@
 package common
 
 import (
+	"bytes"
+	"encoding/json"
 	"errors"
+	"fmt"
+	"net/http"
+	"strings"
 
+	"github.com/google/go-querystring/query"
 	"github.com/shopspring/decimal"
 )
 
@@ -36,4 +42,24 @@ func Math(op string, s1 string, s2 string) (string, error) {
 		return "", errors.New("error in Math func")
 	}
 	return toReturn, nil
+}
+
+func HttpRequest(
+	url string,
+	method string,
+	data interface{},
+) (resp *http.Response, err error) {
+	switch strings.ToLower(method) {
+	case "put":
+	case "delete":
+	case "post":
+		bytes := new(bytes.Buffer)
+		json.NewEncoder(bytes).Encode(data)
+		return http.Post(url, "application/json", bytes)
+	case "get":
+		v, _ := query.Values(data)
+		u := fmt.Sprintf("%s?%s", url, v.Encode())
+		return http.Get(u)
+	}
+	return nil, errors.New("not supported method")
 }

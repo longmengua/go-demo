@@ -8,6 +8,8 @@ require (
 	gorm.io/gorm v1.24.3
 )
 
+require github.com/google/go-querystring v1.1.0 // indirect
+
 require (
 	github.com/gin-contrib/sse v0.1.0 // indirect
 	github.com/go-playground/locales v0.14.0 // indirect
