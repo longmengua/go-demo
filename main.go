@@ -6,6 +6,7 @@ import (
 	"go-demo/util/api"
 	"go-demo/util/config"
 	"go-demo/util/db"
+	"go-demo/util/logger"
 	"path/filepath"
 	"runtime"
 
@@ -13,6 +14,11 @@ import (
 )
 
 func main() {
+	logger.Debug("test debug")
+	logger.Info("test info")
+	logger.Warn("test warn")
+	logger.Error("test error")
+
 	var (
 		_, b, _, _ = runtime.Caller(0)
 		rootPath   = filepath.Dir(b)
