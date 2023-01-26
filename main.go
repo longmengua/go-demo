@@ -2,11 +2,9 @@ package main
 
 import (
 	"go-demo/contorller"
-	"go-demo/entity"
 	"go-demo/util/api"
 	"go-demo/util/config"
-	"go-demo/util/db"
-	"go-demo/util/logger"
+	"go-demo/util/log"
 	"path/filepath"
 	"runtime"
 
@@ -14,10 +12,10 @@ import (
 )
 
 func main() {
-	logger.Debug("test debug")
-	logger.Info("test info")
-	logger.Warn("test warn")
-	logger.Error("test error")
+	log.Debug("test debug")
+	log.Info("test info")
+	log.Warn("test warn")
+	log.Error("test error", nil)
 
 	var (
 		_, b, _, _ = runtime.Caller(0)
@@ -29,19 +27,19 @@ func main() {
 	}
 	config.Init()
 
-	db := db.Struct{
-		Host:   config.DB.Host,
-		Port:   config.DB.Port,
-		User:   config.DB.User,
-		Pwd:    config.DB.Password,
-		DbName: config.DB.DB_Name,
-	}
-	db.Init()
+	// db := db.Struct{
+	// 	Host:   config.DB.Host,
+	// 	Port:   config.DB.Port,
+	// 	User:   config.DB.User,
+	// 	Pwd:    config.DB.Password,
+	// 	DbName: config.DB.DB_Name,
+	// }
+	// db.Init()
 
 	// migrate entity
-	if config.MIGRATE_UP {
-		db.Instance.AutoMigrate(&entity.User{})
-	}
+	// if config.MIGRATE_UP {
+	// 	db.Instance.AutoMigrate(&entity.User{})
+	// }
 
 	// declare repo
 
