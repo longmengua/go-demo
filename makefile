@@ -1,6 +1,10 @@
+# db
+db:
+	docker-compose
+
 # launch http server
 run:
-	go run cmd/tp-backend-generation/main.go cmd/tp-backend-generation/wire_gen.go
+	go run main.go
 
 # test
 test:

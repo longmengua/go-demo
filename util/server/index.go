@@ -1,6 +1,7 @@
-package api
+package server
 
 import (
+	"fmt"
 	"net/http"
 	"strings"
 
@@ -17,7 +18,7 @@ func responseHandler(ctx *gin.Context, h func(req interface{}) (res interface{},
 	ctx.JSON(http.StatusOK, res)
 }
 
-func (s *Struct) Init() {
+func (s *Struct) Init(port int) {
 	if s.Routes != nil {
 		for _, v := range s.Routes {
 			r := &gin.RouteInfo{
@@ -46,6 +47,9 @@ func (s *Struct) Init() {
 		ctx.JSON(http.StatusOK, "Server alive")
 	})
 
+	s.Engine.SetTrustedProxies([]string{"localhost"})
+
 	// launch api server
-	s.Engine.Run()
+	portStr := fmt.Sprintf(":%d", port)
+	s.Engine.Run(portStr)
 }

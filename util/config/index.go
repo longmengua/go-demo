@@ -9,8 +9,8 @@ import (
 )
 
 func (s *Struct) Init() {
-	log.Println(s.RootPath)
-	filePath := fmt.Sprintf("%s/env.yaml", s.RootPath)
+	log.Println(s.Root_Path)
+	filePath := fmt.Sprintf("%s/env.yaml", s.Root_Path)
 	yamlFile, err := ioutil.ReadFile(filePath)
 	if err != nil {
 		panic("failed to connect database")

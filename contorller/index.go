@@ -2,7 +2,7 @@ package contorller
 
 import (
 	"go-demo/contorller/user_controller"
-	"go-demo/util/api"
+	"go-demo/util/server"
 )
 
 func (s *Struct) Init() {
@@ -12,7 +12,7 @@ func (s *Struct) Init() {
 	}
 
 	// Generate routes of APIs
-	s.Routes = []api.Route{
+	s.Routes = []server.Route{
 		{
 			Method:      "get",
 			Path:        "user",
