@@ -4,6 +4,7 @@
 
 - docker volume create go-demo-db
 - docker-compose -f db.docker-compose.yml up
+- docker-compose -f kafka.docker-compose.yml up
 ## controller 
 
 - Managment of the REST interafce to business logic
@@ -31,3 +32,5 @@
 
 - https://tom-collings.medium.com/controller-service-repository-16e29a4684e5
 - https://www.coreycleary.me/what-is-the-difference-between-controllers-and-services-in-node-rest-apis
+- https://github.com/segmentio/kafka-go
+- https://stackoverflow.com/questions/64889763/why-is-there-a-performance-difference-when-i-pass-a-slice-argument-as-value-or-a
